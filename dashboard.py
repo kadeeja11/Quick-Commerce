@@ -9,7 +9,7 @@ df = load_all_products()
 st.set_page_config(page_title="Quick Commerce Price Comparison", layout="wide")
 st.title("Quick Commerce Bread Price Comparison")
 
-# 1️⃣ Price Comparison Table
+# Price Comparison Table
 st.header("Price Comparison Table")
 price_table = df.pivot_table(
     index=['product_name', 'brand'],
@@ -18,7 +18,7 @@ price_table = df.pivot_table(
 ).reset_index()
 st.dataframe(price_table)
 
-# 2️⃣ Average Price per Brand per Platform
+# Average Price per Brand per Platform
 st.header("Average Price per Brand per Platform")
 avg_price = df.groupby(['platform', 'brand'])['price_rupees'].mean().reset_index()
 fig_avg_price = px.bar(
@@ -31,7 +31,7 @@ fig_avg_price = px.bar(
 )
 st.plotly_chart(fig_avg_price, use_container_width=True)
 
-# 3️⃣ Number of Products per Brand per Platform
+# Number of Products per Brand per Platform
 st.header("Number of Products per Brand per Platform")
 prod_count = df.groupby(['platform', 'brand']).size().reset_index(name='count')
 fig_prod_count = px.bar(
@@ -44,7 +44,7 @@ fig_prod_count = px.bar(
 )
 st.plotly_chart(fig_prod_count, use_container_width=True)
 
-# 4️⃣ Best Deals Count per Platform
+# Best Deals Count per Platform
 st.header("Best Deals Count per Platform")
 best_deals = df.loc[df.groupby('product_name')['price_rupees'].idxmin()]
 best_deals_count = best_deals['platform'].value_counts().reset_index()
@@ -58,7 +58,7 @@ fig_best_deals = px.bar(
 )
 st.plotly_chart(fig_best_deals, use_container_width=True)
 
-# 5️⃣ Price Distribution per Platform
+# Price Distribution per Platform
 st.header("Price Distribution per Platform")
 fig_price_dist = px.box(
     df,
@@ -69,7 +69,7 @@ fig_price_dist = px.box(
 )
 st.plotly_chart(fig_price_dist, use_container_width=True)
 
-# 6️⃣ Products Count per Platform
+# Products Count per Platform
 st.header("Products Count per Platform")
 prod_per_platform = df['platform'].value_counts().reset_index()
 prod_per_platform.columns = ['platform', 'product_count']

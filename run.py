@@ -2,7 +2,7 @@
 import os
 import subprocess
 
-# Step 1: Process data (optional: prints head)
+# Step 1: Process data
 from processing import load_all_platforms
 df_all = load_all_platforms()
 print(f"Loaded {len(df_all)} total bread items.")
