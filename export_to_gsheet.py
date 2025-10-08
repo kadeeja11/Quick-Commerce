@@ -4,9 +4,8 @@ from gspread_dataframe import set_with_dataframe
 from processing import load_all_products  # Your function to load the combined product data
 from google.oauth2.service_account import Credentials
 
-# ---- CONFIG ----
-sheet_name = "Quick Commerce Summary"  # Make sure this sheet already exists in your Google Drive
-gc_json_key_path = "service_account.json"  # Path to your JSON key file
+sheet_name = "Quick Commerce Summary"  
+gc_json_key_path = "service_account.json" 
 
 # Authenticate
 scopes = [
@@ -39,8 +38,8 @@ for platform in platforms:
         # Write DataFrame to worksheet
         platform_df = df[df['platform'] == platform]
         set_with_dataframe(ws, platform_df)
-        print(f"✅ {platform} data written to sheet '{sheet_name}' in tab '{ws_title}'")
+        print(f"{platform} data written to sheet '{sheet_name}' in tab '{ws_title}'")
     except Exception as e:
-        print(f"❌ Failed to write {platform} data: {e}")
+        print(f"Failed to write {platform} data: {e}")
 
 print("All done!")
