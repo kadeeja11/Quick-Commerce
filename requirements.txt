@@ -1,2 +1,6 @@
 pandas
-streamlit
+matplotlib
+seaborn
+plotly
+gspread
+gspread_dataframe
