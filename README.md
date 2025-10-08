@@ -1,6 +1,6 @@
 # Quick Commerce Project - Run Guide
 
-##  Prerequisites
+## Prerequisites
 
 Make sure **Python 3.11+** is installed.
 
@@ -36,9 +36,7 @@ python processing.py
 python dashboard.py
 
 
-
-
-### Step 4: Export to Google Sheets
+*** Step 4: Export to Google Sheets ***
 ```bash
 python export_to_gsheet.py
 
