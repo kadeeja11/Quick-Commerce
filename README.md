@@ -1,6 +1,6 @@
 # Quick Commerce Project - Run Guide
 
-## ⚡ Prerequisites
+##  Prerequisites
 
 Make sure **Python 3.11+** is installed.
 
@@ -10,11 +10,10 @@ Create a virtual environment (optional but recommended):
 python -m venv venv
 
 
-Order of Execution
+## Order of Execution
 
 Follow these steps in order to run the project smoothly:
 
----
 
 ### Step 1: Run Scrapers (Optional)
 
@@ -42,7 +41,7 @@ Launch the interactive dashboard to visualize the combined data from all platfor
 python dashboard.py
 
 
-### Step 4: Export to Google Sheets (Optional)
+### Step 4: Export to Google Sheets
 
 This step uploads summary statistics and insights to a Google Sheet. Make sure you have your **service account JSON** file and proper access.
 
@@ -52,3 +51,8 @@ This step uploads summary statistics and insights to a Google Sheet. Make sure y
 
 ```bash
 python export_to_gsheet.py
+
+
+### Step 5: Refer Output Screenshot folder to see all the output
+
+
