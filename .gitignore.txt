@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+
+# JSON Keys
+service_account.json
+
+# IDE files
+.vscode/
+.idea/
+
+# Data (optional if you don’t want to track raw JSONs)
+data/raw/
+
+# Output screenshots (optional)
+output_screenshots/
