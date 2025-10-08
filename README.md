@@ -10,7 +10,7 @@ Create a virtual environment (optional but recommended):
 python -m venv venv
 
 
-## 7️⃣ Order of Execution
+Order of Execution
 
 Follow these steps in order to run the project smoothly:
 
