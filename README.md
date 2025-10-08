@@ -1,140 +1,54 @@
-Make sure Python 3.11+ is installed.
+# Quick Commerce Project - Run Guide
+
+## ⚡ Prerequisites
+
+Make sure **Python 3.11+** is installed.
 
 Create a virtual environment (optional but recommended):
 
+```bash
 python -m venv venv
 
 
-Activate it:
+## 7️⃣ Order of Execution
 
-Windows: venv\Scripts\activate
+Follow these steps in order to run the project smoothly:
 
-Mac/Linux: source venv/bin/activate
+---
 
-Install dependencies:
+### Step 1: Run Scrapers (Optional)
 
-pip install -r requirements.txt
+Only required if the JSON files in `data/raw/` do not exist or need updating:
 
-pandas
-matplotlib
-seaborn
-plotly
-gspread
-gspread_dataframe
-
-3️⃣ Prepare Data
-
-If you already have JSON files (zepto.json, blinkit.json, instamart.json) in data/raw/, you can skip scraping.
-
-Otherwise, run the scrapers to generate JSON files:
-
+```bash
 python scrapers/zepto.py
 python scrapers/blinkit.py
 python scrapers/instamart.py
 
 
-Ensure each scraper outputs a JSON file to data/raw/ (without qty, unit, weight_grams, url if not needed).
+### Step 2: Process Data
 
-4️⃣ Process Data
+This script processes all raw JSON files (`zepto.json`, `blinkit.json`, `instamart.json`) and combines them into a single DataFrame for use in the dashboard.  
 
-Merge and clean all platform data using processing.py.
-
+```bash
 python processing.py
 
 
-This script should:
+### Step 3: Run Dashboard
 
-Load all JSON files
+Launch the interactive dashboard to visualize the combined data from all platforms.
 
-Combine them into a single DataFrame
-
-Calculate derived columns like price_per_100g if needed
-
-Save cleaned/combined data as a CSV or keep in memory for the dashboard
-
-5️⃣ Run the Dashboard
-
-Run dashboard.py to see all visualizations:
-
+```bash
 python dashboard.py
 
 
-The dashboard includes:
+### Step 4: Export to Google Sheets (Optional)
 
-Price Comparison Table
+This step uploads summary statistics and insights to a Google Sheet. Make sure you have your **service account JSON** file and proper access.
 
-Best Deals Count per Platform
+1. Place your service account JSON file in the root folder of the project.
+2. Share your Google Sheet with the **service account email**.
+3. Run the script:
 
-Platform-specific Visualizations:
-
-Average Price per Brand
-
-Number of Products per Brand
-
-Price Distribution
-
-Premium vs Budget Products, etc.
-
-Make sure your processed data is available for the dashboard to read.
-
-6️⃣ Export to Google Sheets (Optional)
-
-Make sure you have service_account.json in the root folder.
-
-Share the Google Sheet with the service account email (xxxxx@xxxxx.iam.gserviceaccount.com) with Editor access.
-
-Edit export_to_gsheet.py with your sheet name:
-
-sheet_name = "Quick Commerce Summary"
-
-
-Run:
-
+```bash
 python export_to_gsheet.py
-
-
-This will export summary statistics and insights into the Google Sheet.
-
-Troubleshooting:
-
-403 Error → Check if Sheets and Drive APIs are enabled in Google Cloud Console.
-
-SpreadsheetNotFound → Make sure the sheet exists and the service account has access.
-
-Quota exceeded → Free up space in your Google Drive.
-
-7️⃣ Order of Execution
-
-(Optional) Run scrapers if JSON files don’t exist:
-
-python scrapers/zepto.py
-python scrapers/blinkit.py
-python scrapers/instamart.py
-
-
-Process data:
-
-python processing.py
-
-
-Run dashboard:
-
-python dashboard.py
-
-
-Export to Google Sheets (optional):
-
-python export_to_gsheet.py
-
-
-✅ Tips for smooth running
-
-Always keep the JSON files updated in data/raw/.
-
-If you add a new platform, just create a new scraper and place the JSON in data/raw/.
-
-Ensure platform-specific visualizations read from the combined DataFrame.
-
-For Google Sheets, use a dedicated service account to avoid quota issues.
-
-If you want, I can make a one-page “Run Guide” diagram showing all scripts and data flow visually. It will make it super easy to hand over or refer back.
